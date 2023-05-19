@@ -8,7 +8,7 @@ for file in $docker_compose_files; do
   mv dc-tmp $file
 done
 
-if [[ $DRY_RUN == "true" ]]; then
+if [ ${DRY_RUN:-} -eq 1 ]; then
   echo "Dry run mode enabled - we would be running the following command:"
   echo "bundle exec conventional-changelog version=${TAG} force=true"
 else
@@ -26,7 +26,7 @@ fi
 git add CHANGELOG.md
 git add docker-compose*
 
-if [[ $DRY_RUN == "true" ]]; then
+if [ ${DRY_RUN:-} -eq 1 ]; then
   echo "Dry run mode enabled - we would be running the following command:"
   echo "git commit -m \"chore(release): version ${TAG}\""
 else

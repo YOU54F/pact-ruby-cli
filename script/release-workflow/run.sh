@@ -11,8 +11,7 @@ fi
 
 . ${script_dir}/set-env-vars.sh
 
-DRY_RUN=${DRY_RUN:-}
-if [[ $DRY_RUN == "true" ]]; then
+if [ ${DRY_RUN:-} -eq 1 ]; then
   echo "Dry run mode enabled"
   ${script_dir}/validate.sh
   ${script_dir}/prepare-release.sh
