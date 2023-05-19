@@ -8,7 +8,8 @@ set -euo >/dev/null
 ## the PACT_CLI_DOCKER_VERSION is our Docker semantic tag
 PACT_CLI_DOCKER_VERSION=$(cat VERSION)
 rm VERSION
-bundle exec bump ${RELEASED_GEM_INCREMENT:-minor} --no-commit
+gem install bump -v 0.9
+bump ${RELEASED_GEM_INCREMENT:-minor} --no-commit
 PACT_CLI_VERSION=$(ruby -I lib -e "require 'pact/cli/version.rb'; puts Pact::Cli::VERSION")
 
 if [ -n "${RELEASED_GEM_NAME:-}" ] && [ -n "${RELEASED_GEM_VERSION:-}" ]; then
