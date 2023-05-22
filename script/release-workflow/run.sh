@@ -11,18 +11,10 @@ fi
 
 . ${script_dir}/set-env-vars.sh
 
-if [ ${DRY_RUN:-} -eq 1 ]; then
-  echo "Dry run mode enabled"
-  ${script_dir}/validate.sh
-  ${script_dir}/prepare-release.sh
-else
-  ${script_dir}/validate.sh
-  ${script_dir}/docker-prepare.sh
-  ${script_dir}/docker-build.sh
-  ${script_dir}/scan.sh
-  ${script_dir}/prepare-release.sh
-  ${script_dir}/docker-push.sh
-  ${script_dir}/git-push.sh
-fi
-
-
+${script_dir}/validate.sh
+${script_dir}/docker-prepare.sh
+${script_dir}/docker-build.sh
+${script_dir}/scan.sh
+${script_dir}/prepare-release.sh
+${script_dir}/docker-push.sh
+${script_dir}/git-push.sh
