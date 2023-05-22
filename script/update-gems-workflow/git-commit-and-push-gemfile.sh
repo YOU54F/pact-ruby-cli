@@ -11,8 +11,14 @@ if [ -n "${RELEASED_GEM_NAME}" ] && [ -n "${RELEASED_GEM_VERSION}" ]; then
 
 [ci-skip]
 "
-else
+elif [ $(git diff Gemfile.lock | grep + | grep pact | wc -l) -eq 1 ]; then
   updated_gems=$(git diff Gemfile.lock | grep + | grep pact | sed -e "s/+ *//" | ruby -e 'puts ARGF.read.split("\n").join(", ")')
+  git commit -m "feat(gems): pact-cli v$PACT_CLI_VERSION: update to ${updated_gems}
+
+[ci-skip]
+"
+else
+  updated_gems=$(git diff Gemfile.lock | grep '^+' | grep '(' | sed -e "s/+ *//" | paste -sd "," - | sed -e 's/,/, /g')
   git commit -m "feat(gems): pact-cli v$PACT_CLI_VERSION: update to ${updated_gems}
 
 [ci-skip]

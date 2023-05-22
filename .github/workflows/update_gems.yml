@@ -63,3 +63,4 @@ jobs:
       with:
         token: ${{ secrets.GHTOKENFORPACTCLIRELEASE }}
         event-type: release-triggered
+        client-payload: '{"increment": "${{ github.event.client_payload.increment }}${{ github.event.inputs.released_gem_version_increment }}"}'
