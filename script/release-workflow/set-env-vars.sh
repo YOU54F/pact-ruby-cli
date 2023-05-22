@@ -3,14 +3,13 @@
 set -e
 
 export DOCKER_IMAGE_ORG_AND_NAME=${DOCKER_IMAGE_ORG_AND_NAME:-'you54f/pact-cli'}
-if [ $DOCKER_TARGET_PLATFORM ]; then
+if [ -n "${DOCKER_TARGET_PLATFORM:-}" ]; then
     export ARCH=$(echo "$DOCKER_TARGET_PLATFORM" | sed 's/linux\///' | sed 's/\/v.*//')
     export ARCHES="$ARCH"
     export $ARCHES
 else 
-    ARCHES='"amd64" "arm64" "arm"'
-    export $ARCHES
-    export ARCH=${ARCHES[0]}
+    ARCHES='amd64 arm64 arm'
+    export ARCH=amd64
 fi
 
 if [ -n "${CUSTOM_TAG:-}" ]; then
