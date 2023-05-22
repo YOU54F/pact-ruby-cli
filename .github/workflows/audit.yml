@@ -8,7 +8,7 @@ on:
 
 jobs:
   audit:
-    name: 💥 audit
+    name: 👮 audit
     strategy:
       fail-fast: false
       matrix:
