@@ -12,7 +12,7 @@ if [ -n "${RELEASED_GEM_NAME}" ] && [ -n "${RELEASED_GEM_VERSION}" ]; then
 [ci-skip]
 "
 else
-  updated_gems=$(git diff Gemfile.lock | grep '^+' | grep '(' | sed -e "s/+ *//" | paste -sd "," - | sed -e 's/,/, /g')
+  updated_gems=$(git diff --staged Gemfile.lock | grep '^+' | grep '(' | sed -e "s/+ *//" | paste -sd "," - | sed -e 's/,/, /g')
   git commit -m "feat(gems): pact-cli v$PACT_CLI_VERSION: update to ${updated_gems}
 
 [ci-skip]
