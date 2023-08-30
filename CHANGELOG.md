@@ -1,3 +1,15 @@
+<a name="1.0.0.0"></a>
+### 1.0.0.0 (2023-08-30)
+
+#### Features
+
+* **gems**
+  * updated pact-cli (1.0.0)	 ([aa5add8](/../../commit/aa5add8))
+  * pact-cli v0.55.0: update pact_broker-client gem to version 1.70.0	 ([03fbd15](/../../commit/03fbd15))
+  * pact-cli v0.54.0: update pact_broker-client gem to version 1.69.0	 ([4034d71](/../../commit/4034d71))
+  * pact-cli v0.53.0: update pact_broker-client gem to version 1.68.0	 ([86d6d79](/../../commit/86d6d79))
+  * pact-cli v0.52.0: update pact-mock_service gem to version 3.11.2	 ([04135ad](/../../commit/04135ad))
+
 <a name="0.51.0.4"></a>
 ### 0.51.0.4 (2023-05-18)
 
