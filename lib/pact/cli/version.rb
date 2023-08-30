@@ -1,5 +1,5 @@
 module Pact
   module Cli
-    VERSION = "0.55.0"
+    VERSION = "1.0.0"
   end
 end
