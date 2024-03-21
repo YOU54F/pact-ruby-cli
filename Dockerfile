@@ -1,4 +1,5 @@
-FROM alpine:3.18
+ARG BASE_IMAGE=alpine:3.18
+FROM ${BASE_IMAGE}
 
 LABEL maintainer="Beth Skurrie <beth@bethesque.com>"
 
@@ -12,17 +13,17 @@ RUN apk update \
   && apk add ruby=3.2.2-r0 \
              ruby-bigdecimal=3.2.2-r0 \
              ruby-io-console=3.2.2-r0 \
-             ca-certificates=20230506-r0 \
-             libressl \
+             ca-certificates=20240226-r0 \
+             openssl \
              less \
              git \
   && apk add --virtual "build-dependencies" \
              build-base=0.5-r3 \
              ruby-dev=3.2.2-r0 \
-             libressl-dev \
+             openssl-dev \
+            #  libressl-dev \ # libressl-dev is not available on s390x
              ruby-rdoc=3.2.2-r0 \
   && gem install bundler -v 2.4 \
-  && bundler -v \
   && bundle config build.nokogiri --use-system-libraries \
   && bundle config git.allow_insecure true \
   && gem update --system \
